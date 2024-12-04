@@ -1,0 +1,12 @@
+cmake_minimum_required(version 3.10)
+project(Muhammad)
+
+option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+
+add_library(Jonny lib.cpp)
+
+target_include_directories(Jonny PUBLIC ${CMAKE_SOURCE_DIR})
+
+add_executable(jonny main.cpp)
+
+target_link_libraries(jonny PRIVATE Jonny)

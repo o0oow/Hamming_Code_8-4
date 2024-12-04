@@ -1,0 +1,15 @@
+g++ main.cpp ... -o main -- to make exe file with name "main" ... this is to join another files to exe file
+
+./main.exe -- run the exe file if you are in current directory or write the full path 
+
+g++ -shared -o liMylib.dll lib.cpp -- to create the dynamic library "Mylib.dll"(run it every time when u will change somthing in it)
+
+g++ main.cpp -L. -lMulib -o main -- Compile the main with dynamic library
+
+g++ -c lib.cpp -o lib.o -- compile the lib.cpp into object file "lib.o"
+
+ar rcs libMylib.a lib.o -- initialize the library and now we got static lib "Mylib.a" 
+
+g++ main.cpp -L. -lMylib -o main -- run the main with a static library
+
+  
