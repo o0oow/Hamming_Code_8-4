@@ -35,7 +35,7 @@ A C++ program that implements **Hamming (8,4) Code** for encoding, error detecti
 ### Building the Project
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/HammingCodeProgram.git
+  git clone https://github.com/yourusername/HammingCodeProgram.git](https://github.com/o0oow/Hamming_Code_8-4.git)
    ```
 2. Navigate to the project directory:
    ```bash
