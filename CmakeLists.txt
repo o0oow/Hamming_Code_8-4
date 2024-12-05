@@ -1,12 +1,19 @@
-cmake_minimum_required(version 3.10)
-project(Muhammadjon)
+cmake_minimum_required(VERSION 3.10)
 
+# Название проекта
+project(HammingCode8-4)
+
+# Опция для выбора типа библиотеки (по умолчанию динамическая)
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
-add_library(Jonny lib.cpp)
+# Добавление библиотеки (динамической или статической)
+add_library(HammingLib lib.cpp)
 
-target_include_directories(Jonny PUBLIC ${CMAKE_SOURCE_DIR})
+# Указываем путь к заголовочным файлам
+target_include_directories(HammingLib PUBLIC ${CMAKE_SOURCE_DIR})
 
-add_executable(jonny main.cpp)
+# Добавление исполняемого файла с именем "main"
+add_executable(main main.cpp)
 
-target_link_libraries(jonny PRIVATE Jonny)
+# Связываем исполняемый файл с библиотекой
+target_link_libraries(main PRIVATE HammingLib)
