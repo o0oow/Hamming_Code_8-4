@@ -1,5 +1,3 @@
----
-
 # Hamming Code Program
 
 A C++ program that implements **Hamming (8,4) Code** for encoding, error detection, and correction of 4-bit data sequences. The program ensures data integrity by detecting and correcting single-bit errors while identifying cases with too many errors. This makes it particularly useful in **digital communication systems**, **memory storage**, and **data transmission**, where maintaining error-free data is critical.
@@ -35,11 +33,11 @@ A C++ program that implements **Hamming (8,4) Code** for encoding, error detecti
 ### Building the Project
 1. Clone the repository:
    ```bash
-  git clone https://github.com/yourusername/HammingCodeProgram.git](https://github.com/o0oow/Hamming_Code_8-4.git)
+   git clone https://github.com/o0oow/Hamming_Code_8-4.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd HammingCodeProgram
+   cd Hamming_Code_8-4
    ```
 3. Build the project:
    ```bash
@@ -135,5 +133,3 @@ While the Hamming Code is effective for single-bit error correction, there are o
 - **Turbo Codes**: Used in wireless communication for high reliability.
 
 These advanced algorithms provide improved error correction at the cost of higher computational complexity. For basic error detection and correction, however, the Hamming Code remains a practical and elegant solution.
-
---- 
