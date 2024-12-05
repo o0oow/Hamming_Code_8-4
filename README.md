@@ -1,16 +1,16 @@
-# Hamming Code Program
+# Hamming Code Program (8/4)
 
-A C++ program that implements **Hamming (8,4) Code** for encoding, error detection, and correction of 4-bit data sequences. The program ensures data integrity by detecting and correcting single-bit errors while identifying cases with too many errors. This makes it particularly useful in **digital communication systems**, **memory storage**, and **data transmission**, where maintaining error-free data is critical.
+A C++ program implementing **Hamming (8,4) Code** for encoding, error detection, and correction of 4-bit data sequences. The program adheres to the standard bit arrangement where parity bits are placed at positions corresponding to powers of two (1, 2, 4, 8). It ensures reliable data transmission by detecting single-bit errors, correcting them when possible, and identifying cases with multiple errors.
 
 ---
 
 ## Features
 
-- **Encoding**: Converts 4-bit input data into an 8-bit Hamming code.
+- **Encoding**: Converts 4-bit input data into an 8-bit Hamming code with parity bits at positions 1, 2, 4, and 8.
 - **Error Detection and Correction**:
-  - Detects and corrects single-bit errors.
-  - Identifies cases with multiple errors ("Too many errors").
-- **User-Friendly Interface**: Simple prompts guide the user through the process.
+  - Corrects single-bit errors in received data.
+  - Detects and reports multiple errors without attempting blind correction.
+- **User Interface**: Simple prompts guide the user to input and review results interactively.
 
 ---
 
@@ -20,15 +20,14 @@ A C++ program that implements **Hamming (8,4) Code** for encoding, error detecti
 - [Usage](#usage)
 - [How It Works](#how-it-works)
 - [Example](#example)
-- [Additional Notes](#additional-notes)
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-- A C++ compiler (e.g., GCC)
-- Basic knowledge of command-line tools
+- C++ compiler (e.g., GCC)
+- Basic knowledge of using terminal commands
 
 ### Building the Project
 1. Clone the repository:
@@ -39,7 +38,7 @@ A C++ program that implements **Hamming (8,4) Code** for encoding, error detecti
    ```bash
    cd Hamming_Code_8-4
    ```
-3. Build the project:
+3. Compile the program:
    ```bash
    g++ main.cpp -L. -lMylib -o main
    ```
@@ -53,31 +52,29 @@ Run the program:
 ./main
 ```
 
-Follow the prompts to:
-1. Input a **4-bit data sequence** for encoding.
-2. Enter an **8-bit received code** for error detection and correction.
+Follow the on-screen prompts to:
+1. Enter **4 data bits** (0s and 1s) for encoding.
+2. Provide an **8-bit received code** to detect and correct errors.
 
 ---
 
 ## How It Works
 
 1. **Hamming (8,4) Encoding**:
-   - Encodes 4 data bits (D1, D2, D3, D4) into an 8-bit Hamming code with parity bits (P1, P2, P3, P4).
-
-   ```
-   P1 D1 P2 D2 P3 D3 P4 D4
-   ```
-
-   The parity bits are calculated as:
-   - `P1 = D1 ⊕ D2 ⊕ D4`
-   - `P2 = D1 ⊕ D3 ⊕ D4`
-   - `P3 = D2 ⊕ D3 ⊕ D4`
-   - `P4 = D1 ⊕ D2 ⊕ D3 ⊕ D4`
+   - The program arranges data bits (D1, D2, D3, D4) and parity bits (P1, P2, P3, P4) into the following structure:
+     ```
+     P1 P2 D1 P3 D2 D3 D4 P4
+     ```
+   - The parity bits are calculated as follows:
+     - `P1` checks bits 1, 3, 5, 7.
+     - `P2` checks bits 2, 3, 6, 7.
+     - `P3` checks bits 4, 5, 6, 7.
+     - `P4` checks bits 8.
 
 2. **Error Detection and Correction**:
-   - Checks parity bits using the same formula.
-   - If there is a single-bit error, it is corrected.
-   - If there are multiple errors, the program notifies the user without attempting to fix them.
+   - For the received code, the program calculates parity bits again.
+   - If a single error is detected, it identifies and corrects the erroneous bit.
+   - If multiple errors are detected, the program outputs a message: **"Too many errors detected!"** without attempting correction.
 
 ---
 
@@ -92,28 +89,30 @@ Enter 4 data bits (0 or 1): 1 0 1 1
 
 **Output**:  
 ```
-Encoded Hamming Code: 1 1 0 0 1 0 1 1
+Encoded Hamming Code: 0 1 1 0 0 1 1 0
 ```
 
 ---
 
 ### Error Detection and Correction
 
+#### Single-Bit Error:
 **Input**:  
 ```
-Enter the received code (8 bits): 1 1 0 1 1 0 1 1
+Enter the received code (8 bits): 1 1 1 0 0 1 1 0
 ```
 
 **Output**:  
 ```
-Error detected at position: 4
-Corrected code: 1 1 0 0 1 0 1 1
+Error detected at position: 1
+Corrected code: 0 1 1 0 0 1 1 0
 Decoded data: 1 0 1 1
 ```
 
-**Input (multiple errors)**:  
+#### Multiple Errors:
+**Input**:  
 ```
-Enter the received code (8 bits): 0 1 0 0 1 1 1 0
+Enter the received code (8 bits): 1 1 0 1 0 0 1 1
 ```
 
 **Output**:  
@@ -123,13 +122,10 @@ Too many errors detected! Unable to correct.
 
 ---
 
-## Additional Notes
+## Notes and Extensions
 
-While the Hamming Code is effective for single-bit error correction, there are other algorithms that handle more complex error scenarios, such as:
+The Hamming (8,4) Code is widely used for error detection and correction in memory systems and telecommunications. However, it has limitations:
+- Can only correct single-bit errors.
+- Cannot handle burst or multiple-bit errors.
 
-- **BCH Codes**: Correct multiple errors in a fixed-size block.
-- **Reed-Solomon Codes**: Widely used in CDs, DVDs, and QR codes.
-- **LDPC (Low-Density Parity-Check) Codes**: Efficient for high-throughput communication.
-- **Turbo Codes**: Used in wireless communication for high reliability.
-
-These advanced algorithms provide improved error correction at the cost of higher computational complexity. For basic error detection and correction, however, the Hamming Code remains a practical and elegant solution.
+For more robust error correction, consider exploring advanced algorithms like BCH codes or Reed-Solomon codes.
