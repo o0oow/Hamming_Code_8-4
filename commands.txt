@@ -1,15 +1,20 @@
-g++ main.cpp ... -o main -- to make exe file with name "main" ... this is to join another files to exe file
+g++ main.cpp ... -o main
+This command creates an executable file named main by compiling main.cpp along with any other necessary files.
 
-./main.exe -- run the exe file if you are in current directory or write the full path 
+./main.exe
+Run the executable file main from the current directory. If you're not in the current directory, provide the full path to the file.
 
-g++ -shared -o liMylib.dll lib.cpp -- to create the dynamic library "Mylib.dll"(run it every time when u will change somthing in it)
+g++ -shared -o Mylib.dll lib.cpp
+This command creates a dynamic library named Mylib.dll from the source file lib.cpp. Run this command each time you make changes to lib.cpp to update the library.
 
-g++ main.cpp -L. -lMulib -o main -- Compile the main with dynamic library
+g++ main.cpp -L. -lMylib -o main
+This compiles main.cpp and links it with the dynamic library Mylib.dll located in the current directory (-L.) to produce the executable main.
 
-g++ -c lib.cpp -o lib.o -- compile the lib.cpp into object file "lib.o"
+g++ -c lib.cpp -o lib.o
+This compiles lib.cpp into an object file named lib.o without linking.
 
-ar rcs libMylib.a lib.o -- initialize the library and now we got static lib "Mylib.a" 
+ar rcs libMylib.a lib.o
+This initializes a static library named libMylib.a using the object file lib.o. The ar tool packages the object file into a static library format.
 
-g++ main.cpp -L. -lMylib -o main -- run the main with a static library
-
-  
+g++ main.cpp -L. -lMylib -o main
+This command compiles main.cpp and links it with the static library libMylib.a located in the current directory (-L.) to produce the executable main.

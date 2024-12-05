@@ -1,5 +1,5 @@
 cmake_minimum_required(version 3.10)
-project(Muhammad)
+project(Muhammadjon)
 
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
