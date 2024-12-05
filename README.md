@@ -104,7 +104,7 @@ Enter the received code (8 bits): 1 1 1 0 0 1 1 0
 
 **Output**:  
 ```
-Error detected at position: 1
+Error detected at position: 8
 Corrected code: 0 1 1 0 0 1 1 0
 Decoded data: 1 0 1 1
 ```
